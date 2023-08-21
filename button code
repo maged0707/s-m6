@@ -1,0 +1,64 @@
+كود صفحة الازرار
+<!DOCTYPE html>
+<html>
+<head>
+  <title>صفحة الأزرار</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 20px;
+      background-color: #eee;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+    
+    .button.top {
+      margin-bottom: 20px;
+    }
+    
+    .button.right {
+      margin-left: 200px;
+    }
+    
+    .button.middle {
+      margin: -65px 0;
+    }
+    
+    .button.left {
+      margin-right: 200px;
+    }
+    
+    .button.bottom {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+     <button class="button top" onclick="saveButton('top')">امام</button>
+    <button class="button right" onclick="saveButton('right')">يمين</button>
+    <button class="button middle" onclick="saveButton('middle')">توقف</button>
+    <button class="button left" onclick="saveButton('left')">يسار</button>
+    <button class="button bottom" onclick="saveButton('bottom')">خلف</button>
+  </div>
+  <script>
+    function saveButton(buttonName) {
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "save-button.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send("button=" + buttonName);
+    }
+  </script>
+</body>
+</html>
