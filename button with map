@@ -1,0 +1,136 @@
+كود htmi مع الماب 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>حركة الروبوت</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+   
+    .button {
+      display: inline-block;
+      padding: 20px;
+      background-color: #eee;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+   
+    .button.top {
+      margin-bottom: 20px;
+    }
+   
+    .button.right {
+      margin-left: 200px;
+    }
+   
+    .button.middle {
+      margin: -65px 0;
+    }
+   
+    .button.left {
+      margin-right: 200px;
+    }
+   
+    .button.bottom {
+      margin-top: 20px;
+    }
+
+    canvas {
+      border: 1px solid black;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>التحكم في الروبوت</h1>
+    <div>
+      <button class="button top" id="btn-up" value="up">أمام</button>
+    </div>
+    <div>
+      <button class="button left" id="btn-left" value="left">يسار</button>
+      <button class="button middle" id="btn-stop" value="stop">توقف</button>
+      <button class="button right" id="btn-right" value="right">يمين</button>
+    </div>
+    <div>
+      <button class="button bottom" id="btn-down" value="down">وراء</button>
+    </div>
+    <canvas id="canvas" width="500" height="300"></canvas>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    const cellSize = 6; 
+    let x = Math.floor(canvas.width / 2); 
+    let y = Math.floor(canvas.height / 2);
+
+    const buttons = document.querySelectorAll(".button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", handleMapControl);
+    });
+
+    function handleMapControl(event) {
+      const action = event.target.value;
+
+    
+      switch (action) {
+        case "left":
+          moveLeft();
+          break;
+        case "right":
+          moveRight();
+          break;
+        case "up":
+          moveUp();
+          break;
+        case "down":
+          moveDown();
+          break;
+        case "stop":
+          stopMovement();
+          break;
+        default:
+          break;
+      }
+    }
+
+    function moveLeft() {
+      x -= cellSize;
+      drawSnake();
+    }
+
+    function moveRight() {
+      x += cellSize;
+      drawSnake();
+    }
+
+    function moveUp() {
+      y -= cellSize;
+      drawSnake();
+    }
+
+    function moveDown() {
+      y += cellSize;
+      drawSnake();
+    }
+
+    function stopMovement() {
+     
+    }
+
+    function drawSnake() {
+      context.fillStyle = "black";
+      context.fillRect(x, y, cellSize, cellSize);
+    }
+  </script>
+</body>
+</html>
