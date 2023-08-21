@@ -1,0 +1,22 @@
+كود لحفظ اخر زر 
+<?php
+$host = 'localhost';
+$dbname = 'robot';
+$username = 'root';
+$password = '';
+
+
+try {
+
+    $conn = new PDO("mysql:localhost=$host;robot=$dbname;charset=utf8", $username, $password);
+
+    $stmt = $conn->prepare("INSERT INTO tesr button VALUES (?)");
+
+    $button = $_POST['button'];
+
+    $stmt->execute([$button]);
+
+    echo json_encode(['message' => 'تم حفظ الزر بنجاح']);
+} catch (PDOException $e) {
+    echo json_encode(['message' => 'حدث خطأ في الاتصال بقاعدة البيانات: ' . $e->getMessage()]);
+}
