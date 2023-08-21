@@ -8,3 +8,6 @@
 ## المهمة الثانية 
 انشاء ماب لعرض اتجاه الروبوت والتحكم بها بواسطه الازرار
 ![move button map](https://github.com/maged0707/s-m6/assets/141698731/13f56adb-bde0-4a77-beac-4f00c9fa3aff)
+
+### جميع المهمات تمت تحت سيرفر محلي (localhost) بواسطة برنامج xampp
+![xampp](https://github.com/maged0707/s-m6/assets/141698731/88162229-1f7e-48dc-aca8-7643cee8cdf1)
