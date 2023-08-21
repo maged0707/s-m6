@@ -1,0 +1,20 @@
+كود لحفظ اخر زر
+<?php
+$host = 'localhost';
+$dbname = 'robot';
+$username = 'root';
+$password = '';
+
+try {
+    $conn = new PDO("mysql:localhost=$host;robot=$dbname;charset=utf8", $username, $password);
+
+    $stmt = $conn->prepare("SELECT robot * FROM button ");
+
+    $stmt->execute();
+
+    $lastButton = $stmt->fetchColumn();
+
+    echo json_encode(['lastButton' => $lastButton]);
+} catch (PDOException $e) {
+    echo json_encode(['message' => 'حدث خطأ في الاتصال بقاعدة البيانات: ' . $e->getMessage()]);
+}
